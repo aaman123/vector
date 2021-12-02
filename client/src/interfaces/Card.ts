@@ -1,5 +1,6 @@
 export interface Card {
     type: string,
     title: string,
-    position: number
+    position: string,
+    image: string,
 }
