@@ -1,12 +1,14 @@
 import databases
+import os
 from starlette.config import Config
+from decouple import config as de_config
 
 config = Config()
 
 DATABASE_URL = config(
     "DATABASE_URL",
     cast=databases.DatabaseURL,
-    default="postgres://postgres:Aman@localhost:5432/vector_assessment",
+    default=de_config('DATABASE_URL'),
 )
 
 if DATABASE_URL.dialect == "postgres":

@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  vector-server:
+    build: .
+    command: python server.py
+    depends_on:
+      - vector-db
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8000:8000"
+    environment:
+        DATABASE_URL: postgres://postgres:Aman@localhost:5432/vector_assessment
+  vector-db:
+    image: postgres
+    volumes:
+        - ./data/db:/var/lib/postgresql/data
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_DB: vector_assessment
+        POSTGRES_PASSWORD: Aman

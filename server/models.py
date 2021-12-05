@@ -9,6 +9,7 @@ cards = sqlalchemy.Table(
     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
     sqlalchemy.Column("type", sqlalchemy.String),
     sqlalchemy.Column("title", sqlalchemy.String),
+    sqlalchemy.Column("position", sqlalchemy.String),
     sqlalchemy.Column("imgUrl", sqlalchemy.String),
 )
 
