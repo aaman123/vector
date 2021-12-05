@@ -20,13 +20,18 @@ const Dashboard = () => {
     const [timeDiff, setTimeDiff] = useState('');
 
     useEffect(() => {
-        getCards().then((response) => { updateCards(response.data); })
+        if(cards.length == 0) {
+            getCards().then((response) => { updateCards(response.data); })
+        }
+        
         if(areCardsUpdated == true) {
-            updateCardApi(cards).then((response) => {console.log('cards updated')});
-            setAreCardsUpdated(!areCardsUpdated);
-            setIsSaving(!isSaving);
-            setSavedTime(moment.now());
-            setTimeDiff('');
+            cards.forEach((card, index) => {return card.position = index.toString()});
+            updateCardApi(cards).then((response) => {
+                setAreCardsUpdated(!areCardsUpdated);
+                setIsSaving(!isSaving);
+                setSavedTime(moment.now());
+                setTimeDiff('');
+            });
         }
 
         const timerId = setInterval(() => {setTimeDiff(moment(savedTime).fromNow())}, 20000);
@@ -69,7 +74,7 @@ const Dashboard = () => {
                             {
                             cards.map((card, index) => {
                                 return(
-                                    <Draggable key={card.id.toString()} draggableId={card.id.toString()} index={index}>
+                                    <Draggable key={card.position} draggableId={card.position} index={index}>
                                         {(provided: any) => (
                                             <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                                 <Box ml={5}>

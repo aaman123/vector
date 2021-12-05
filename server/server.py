@@ -18,6 +18,7 @@ async def getCards(request):
             "id": result["id"],
             "type": result["type"],
             "title": result["title"],
+            "position": result["position"],
             "imgUrl": result["imgUrl"]
         }
         for result in results
