@@ -9,6 +9,9 @@ import { getCards, updateCards as updateCardApi } from '../../utils/ApiCaller';
 import moment from 'moment';
 
 const Dashboard = () => {
+    /*
+        SETTING ALL THE NECESSARY STATE VARIABLES
+    */
     const Cards: Card[] = [];
     const classes = useStyles();
     const [cards, updateCards] = useState(Cards);
@@ -19,6 +22,11 @@ const Dashboard = () => {
     const [savedTime, setSavedTime] = useState<number>(moment.now);
     const [timeDiff, setTimeDiff] = useState('');
 
+    /*
+        Triggering on amount and every 5 seconds.
+        Dependency array takes three state variable into account
+        and listens for changes to them.
+    */
     useEffect(() => {
         if(cards.length == 0) {
             getCards().then((response) => { updateCards(response.data); })
@@ -40,6 +48,9 @@ const Dashboard = () => {
         }
     }, [areCardsUpdated, isSaving, savedTime]);
 
+    /*
+        React beautiful DND handling on drag end event.
+    */
     function handleOnDragEnd(result: any) {
         if (!result.destination) return;
     
@@ -82,10 +93,10 @@ const Dashboard = () => {
                                                             onClick={() => {setIsOpen(!isOpen); setImage(card.imgUrl)}}
                                                     >
                                                         <CardMedia
-                                                        component="img"
-                                                        height="140"
-                                                        image={card.imgUrl}
-                                                        alt="green iguana"
+                                                            component="img"
+                                                            height="140"
+                                                            image={card.imgUrl}
+                                                            alt="green iguana"
                                                         />
                                                         <CardContent>
                                                             <Typography gutterBottom variant="h5" component="div">

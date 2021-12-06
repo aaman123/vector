@@ -5,6 +5,11 @@ from decouple import config as de_config
 
 config = Config()
 
+'''
+    Database configuration file.
+    Takes env url from .env file
+'''
+
 DATABASE_URL = config(
     "DATABASE_URL",
     cast=databases.DatabaseURL,

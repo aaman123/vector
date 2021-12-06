@@ -3,6 +3,12 @@ import asyncio
 from models import cards, metadata, engine
 from database import database
 
+'''
+    Python File for seeding the initial database
+    RUN python seed.py or python3 seed.py in the 
+    command line to seed the database.
+'''
+
 seeding_data = [
     { "type": "bank-draft", "title": "Bank Draft", "position": "0" ,"imgUrl": 'https://robohash.org/voluptatesaliquidet.png?size=50x50&set=set1'}, 
     { "type": "bill-of-lading", "title": "Bill of Landing", "position": "1" ,"imgUrl": "https://robohash.org/molestiaeatquefuga.png?size=50x50&set=set1" },

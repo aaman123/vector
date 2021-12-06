@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { Card } from '../interfaces/Card';
 
+/*
+ API calls to get and update cards.
+ Dependency - Axios.
+*/
+
 const getCards = () => {
     return axios({
         method: 'GET',
