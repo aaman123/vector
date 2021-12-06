@@ -4,7 +4,7 @@ import { Card } from '../interfaces/Card';
 const getCards = () => {
     return axios({
         method: 'GET',
-        url: `http://localhost:8000/get_cards`,
+        url: `http://3.110.128.120/get_cards`,
         headers: {
             'Content-Type': 'application/json'
         }
@@ -16,7 +16,7 @@ const getCards = () => {
 const updateCards = (payLoad: Card[]) => {
     return axios({
         method: 'POST',
-        url: `http://localhost:8000/update_cards`,
+        url: `http://3.110.128.120/update_cards`,
         data: JSON.stringify(payLoad)
     }).catch(error => {
         return error.response;
